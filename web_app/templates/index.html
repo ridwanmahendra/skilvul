@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediksi Tagihan Listrik</h1>
+        <h3>Input Data</h3>
+        <form action="/predict" method="post">
+            <label for="electricity-rate">Tarif per kWh (Rp/kWh):</label>
+            <input type="number" id="electricity-rate" name="electricity-rate" min="0" step="0.01" required><br><br>
+            <table id="dataTable">
+                <tr>
+                    <th>Perangkat</th>
+                    <th>Voltage (V)</th>
+                    <th>Ampere (A)</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="device"></td>
+                    <td><input type="text" name="voltage"></td>
+                    <td><input type="text" name="ampere"></td>
+                    <td><button type="button" onclick="removeRow(this)">Hapus Data</button></td>
+                </tr>
+            </table>
+            <button type="button" onclick="addRow()">Tambah Data</button>
+            <br><br>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
